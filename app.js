@@ -101,7 +101,7 @@ function btnEventListener() {
   // Generic function that handle calling of anime Data for click event and keyboard event
   const animeName = getAnimeName();
   if (!animeName) {
-    errorContainer.classList.add("visible");
+    displayError("Please enter a valid name");
     return;
   }
   getAnimeData(animeName);
