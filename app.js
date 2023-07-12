@@ -3,6 +3,7 @@ const searchInput = document.querySelector(".search-input");
 const searchBtn = document.querySelector(".search-btn");
 const errorContainer = document.querySelector(".error");
 const errorCLoseBtn = document.querySelector(".close-btn");
+const spinner = document.querySelector(".spinner");
 
 // prettier-ignore
 class Anime {
@@ -52,6 +53,7 @@ class Anime {
 }
 
 async function getAnimeData(name) {
+  spinner.style.display = "block";
   const url = `https://api.jikan.moe/v4/anime?q=${name}&sfw`;
   try {
     const res = await fetch(url);
@@ -72,6 +74,7 @@ async function getAnimeData(name) {
       );
       anime.renderAnime();
     });
+    spinner.style.display = "none";
   } catch (err) {
     displayError(err.message);
   }
