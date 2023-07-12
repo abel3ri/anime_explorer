@@ -1,6 +1,6 @@
 const animeContainer = document.querySelector(".container");
 const searchInput = document.querySelector(".search-input");
-const serachBtn = document.querySelector(".search-btn");
+const searchBtn = document.querySelector(".search-btn");
 const errorContainer = document.querySelector(".error");
 const errorCLoseBtn = document.querySelector(".close-btn");
 
@@ -56,6 +56,7 @@ async function getAnimeData(name) {
   const res = await fetch(url);
 
   const { data: animeData } = await res.json();
+  searchInput.value = "";
   //   console.log(animeData[0]);
   animeData.forEach((a) => {
     const anime = new Anime(
@@ -71,39 +72,47 @@ async function getAnimeData(name) {
     anime.renderAnime();
   });
 }
-// Clear anime container before loading another anime
+//! Clear anime container before loading another anime
 const clearAnimeContainer = function () {
   animeContainer.innerHTML = "";
 };
-// call back for removing error container
-const removeErrorContainer = function () {
-  if (!errorContainer.classList.contains("visible")) return;
-  errorContainer.classList.remove("visible");
-};
 
-// Call back function for getting anime name from input
+//! Call back function for getting anime name from input
+
 const getAnimeName = function () {
   if (searchInput.value == null || searchInput.value == "") {
-    errorContainer.classList.add("visible");
-    setTimeout(removeErrorContainer, 3000);
-    return;
+    return false;
   }
-  console.log(searchInput.value);
+  //   console.log(searchInput.value);
   clearAnimeContainer();
   return searchInput.value;
 };
 
-// Event listeners
-serachBtn.addEventListener("click", () => {
-  getAnimeData(getAnimeName());
+function btnEventListener() {
+  // Generic function that handle calling of anime Data for click event and keyboard event
+  const animeName = getAnimeName();
+  if (!animeName) {
+    errorContainer.classList.add("visible");
+    return;
+  }
+  getAnimeData(animeName);
+}
+
+// ! Event listeners
+searchBtn.addEventListener("click", () => {
+  btnEventListener();
 });
 
 window.addEventListener("keydown", (e) => {
   if (e.key == "Enter") {
-    getAnimeData(getAnimeName());
+    btnEventListener();
   }
 });
 
-errorCLoseBtn.addEventListener("click", removeErrorContainer);
+errorCLoseBtn.addEventListener("click", () => {
+  errorContainer.classList.remove("visible");
+});
+
+// Default
 
 getAnimeData("Naruto");
