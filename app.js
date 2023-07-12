@@ -11,6 +11,7 @@ class Anime {
     synopsis
   ) {
     this.imgSrc = imgSrc;
+    // Replace the extra characters with ... if the anime title exceeds 26 characters
     this.title =
       title.length > 26
         ? title.slice(0, title.length / 2).padEnd(title.length / 2 + 3, "...")
@@ -22,6 +23,7 @@ class Anime {
     this.episodeDuration = episodeDuration;
     this.synopsis = synopsis;
   }
+  // Format the date to a standardized formatting
   formatDate() {
     return Intl.DateTimeFormat(navigator.language, {
       month: "short",
