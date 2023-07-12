@@ -148,3 +148,13 @@ header {
 .footer a:is(:link, :visited) {
   color: #101920;
 }
+
+@media (max-width: 645px) {
+  header {
+    max-width: 45rem;
+  }
+  .container {
+    grid-template-columns: 1fr;
+    max-width: 35rem;
+  }
+}
