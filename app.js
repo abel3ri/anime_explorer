@@ -11,7 +11,10 @@ class Anime {
     synopsis
   ) {
     this.imgSrc = imgSrc;
-    this.title = title;
+    this.title =
+      title.length > 26
+        ? title.slice(0, title.length / 2).padEnd(title.length / 2 + 3, "...")
+        : title;
     this.releaseDate = releaseDate;
     this.rating = rating;
     this.episodes = episodes;
