@@ -81,6 +81,7 @@ header {
   color: var(--primary-color);
 
   padding: 0.5rem 2rem 0 2rem;
+  width: 20rem;
   border-radius: 4px;
   font-size: 1.4rem;
 
@@ -155,6 +156,6 @@ header {
   }
   .container {
     grid-template-columns: 1fr;
-    max-width: 35rem;
+    max-width: 30rem;
   }
 }
