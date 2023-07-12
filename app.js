@@ -1,4 +1,10 @@
-// // prettier-ignore
+const animeContainer = document.querySelector(".container");
+const searchInput = document.querySelector(".search-input");
+const serachBtn = document.querySelector(".search-btn");
+const errorContainer = document.querySelector(".error");
+const errorCLoseBtn = document.querySelector(".close-btn");
+
+// prettier-ignore
 class Anime {
   constructor(
     imgSrc,
@@ -32,7 +38,7 @@ class Anime {
   }
 
   renderAnime() {
-    const animeContainer = document.querySelector(".container");
+    
     const html = `
     <div class="anime">
       <img src="${this.imgSrc}" alt="Anime image" class="anime-img" />
@@ -65,5 +71,39 @@ async function getAnimeData(name) {
     anime.renderAnime();
   });
 }
+// Clear anime container before loading another anime
+const clearAnimeContainer = function () {
+  animeContainer.innerHTML = "";
+};
+// call back for removing error container
+const removeErrorContainer = function () {
+  if (!errorContainer.classList.contains("visible")) return;
+  errorContainer.classList.remove("visible");
+};
+
+// Call back function for getting anime name from input
+const getAnimeName = function () {
+  if (searchInput.value == null || searchInput.value == "") {
+    errorContainer.classList.add("visible");
+    setTimeout(removeErrorContainer, 3000);
+    return;
+  }
+  console.log(searchInput.value);
+  clearAnimeContainer();
+  return searchInput.value;
+};
+
+// Event listeners
+serachBtn.addEventListener("click", () => {
+  getAnimeData(getAnimeName());
+});
+
+window.addEventListener("keydown", (e) => {
+  if (e.key == "Enter") {
+    getAnimeData(getAnimeName());
+  }
+});
+
+errorCLoseBtn.addEventListener("click", removeErrorContainer);
 
 getAnimeData("Naruto");
