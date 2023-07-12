@@ -53,24 +53,28 @@ class Anime {
 
 async function getAnimeData(name) {
   const url = `https://api.jikan.moe/v4/anime?q=${name}&sfw`;
-  const res = await fetch(url);
+  try {
+    const res = await fetch(url);
 
-  const { data: animeData } = await res.json();
-  searchInput.value = "";
-  //   console.log(animeData[0]);
-  animeData.forEach((a) => {
-    const anime = new Anime(
-      a.images.webp.image_url,
-      a.title,
-      a.aired.from,
-      a.score,
-      a.episodes,
-      a.genres,
-      a.duration,
-      a.synopsis
-    );
-    anime.renderAnime();
-  });
+    const { data: animeData } = await res.json();
+    searchInput.value = "";
+    //   console.log(animeData[0]);
+    animeData.forEach((a) => {
+      const anime = new Anime(
+        a.images.webp.image_url,
+        a.title,
+        a.aired.from,
+        a.score,
+        a.episodes,
+        a.genres,
+        a.duration,
+        a.synopsis
+      );
+      anime.renderAnime();
+    });
+  } catch (err) {
+    displayError(err.message);
+  }
 }
 //! Clear anime container before loading another anime
 const clearAnimeContainer = function () {
@@ -78,6 +82,11 @@ const clearAnimeContainer = function () {
 };
 
 //! Call back function for getting anime name from input
+
+function displayError(errorMessage) {
+  errorContainer.firstChild.textContent = errorMessage;
+  errorContainer.classList.add("visible");
+}
 
 const getAnimeName = function () {
   if (searchInput.value == null || searchInput.value == "") {
