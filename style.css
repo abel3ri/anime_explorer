@@ -1,5 +1,92 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap");
 
+:root {
+  --primary-color: #fcf6f6;
+  --secondary-color: #4932d5;
+  --background-color: #101920;
+  --background: #e9ecef;
+  --accent-color: #87898c;
+}
+
 html {
   font-family: "Poppins", sans-serif;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+
+  font-size: 12px;
+}
+
+body {
+  background-color: var(--background);
+
+  overflow-x: hidden;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+
+  max-width: 65rem;
+  margin: 4rem auto;
+  padding: 0 2rem;
+}
+.search-input {
+  display: inline-block;
+  height: 3rem;
+  width: 100%;
+  font-size: 1.6rem;
+}
+.search-input:is(:focus) {
+  outline: none;
+}
+.search-input,
+.search-btn {
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  border: none;
+}
+.search-btn {
+  cursor: pointer;
+  width: 30%;
+  font-size: 1.4rem;
+
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+
+  transition: background-color 0.3s;
+}
+
+.search-btn:hover {
+  background-color: #4832d5b8;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+
+  max-width: 60rem;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+.anime {
+  background-color: var(--primary-color);
+  border-radius: 5px;
+  padding-bottom: 1.6rem;
+
+  max-width: 50rem;
+
+  box-shadow: 2px 2px 15px 10px rgba(0, 0, 0, 0.1);
+}
+.anime div {
+  display: flex;
+  justify-content: space-around;
+}
+.anime-img {
+  border-radius: 5px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  width: 100%;
 }
