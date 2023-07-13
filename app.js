@@ -4,6 +4,8 @@ const searchBtn = document.querySelector(".search-btn");
 const errorContainer = document.querySelector(".error");
 const errorCLoseBtn = document.querySelector(".close-btn");
 const spinner = document.querySelector(".spinner");
+const filterBtn = document.querySelector(".filter-btn");
+const selectContainer = document.querySelector(".select-container");
 
 // prettier-ignore
 class Anime {
@@ -123,6 +125,10 @@ window.addEventListener("keydown", (e) => {
 
 errorCLoseBtn.addEventListener("click", () => {
   errorContainer.classList.remove("visible");
+});
+
+filterBtn.addEventListener("click", () => {
+  selectContainer.classList.toggle("hidden");
 });
 
 // Default

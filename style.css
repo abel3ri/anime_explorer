@@ -24,15 +24,59 @@ body {
 }
 
 header {
+  position: relative;
   display: flex;
   justify-content: center;
   gap: 1rem;
 
   max-width: 70rem;
-  margin: 4rem auto;
+  margin: 6rem auto;
   padding: 0 2rem;
 }
-.spinner {
+.filter-btn {
+  position: absolute;
+  top: 100%;
+  right: 10%;
+
+  cursor: pointer;
+  width: 48px;
+  height: 48px;
+  background-color: transparent;
+  border: none;
+}
+.select-container {
+  position: absolute;
+  top: 8.6rem;
+  right: 1rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  padding: 2rem 4rem;
+
+  transition: all 0.3s;
+  z-index: 100;
+}
+.select-container .option {
+  cursor: pointer;
+
+  border-bottom: 1px solid var(--primary-color);
+  font-size: 1.6rem;
+
+  padding: 0.2rem 0.5rem;
+
+  /* transition: background-color 0.2s; */
+}
+.select-container .option:hover {
+  background-color: #9186e0;
+}
+.select-container.hidden {
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
 }
 .spinner {
   display: none;
@@ -114,6 +158,7 @@ header {
   width: 20rem;
   border-radius: 4px;
   font-size: 1.4rem;
+  text-align: center;
 
   transform: translateX(-50%) translateY(-20rem);
 
@@ -186,6 +231,6 @@ header {
   }
   .container {
     grid-template-columns: 1fr;
-    max-width: 30rem;
+    max-width: 32rem;
   }
 }
