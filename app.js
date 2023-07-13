@@ -6,6 +6,7 @@ const errorCLoseBtn = document.querySelector(".close-btn");
 const spinner = document.querySelector(".spinner");
 const filterBtn = document.querySelector(".filter-btn");
 const selectContainer = document.querySelector(".select-container");
+let animes = [];
 
 // prettier-ignore
 class Anime {
@@ -41,7 +42,7 @@ class Anime {
   }
 
   renderAnime() {
-    
+
     const html = `
     <div class="anime">
       <img src="${this.imgSrc}" alt="Anime image" class="anime-img" />
@@ -52,6 +53,31 @@ class Anime {
 
     animeContainer.insertAdjacentHTML("beforeend", html);
   }
+}
+/**
+ * @param {Array} animes
+ */
+function sortAnime(animes, type = "default") {
+  if (type == "default") {
+    return animes;
+  }
+  if (type == "title") {
+    return animes.sort((a, b) => a.title.charCodeAt(0) - b.title.charCodeAt(0));
+  }
+  if (type == "rating") {
+    return animes.sort((a, b) => b.rating - a.rating);
+  }
+  if (type == "release") {
+    return animes.sort(
+      (a, b) => Date.parse(a.releaseDate) - Date.parse(b.releaseDate)
+    );
+  }
+  //   } else if(type == '')
+}
+function displayAnime(type) {
+  sortAnime(animes, type).forEach((anime) => {
+    anime.renderAnime();
+  });
 }
 
 async function getAnimeData(name) {
@@ -74,8 +100,10 @@ async function getAnimeData(name) {
         a.duration,
         a.synopsis
       );
-      anime.renderAnime();
+      animes.push(anime);
     });
+    displayAnime("default");
+
     spinner.style.display = "none";
   } catch (err) {
     displayError(err.message);
@@ -84,6 +112,8 @@ async function getAnimeData(name) {
 //! Clear anime container before loading another anime
 const clearAnimeContainer = function () {
   animeContainer.innerHTML = "";
+  // clear animes array
+  animes = [];
 };
 
 //! Call back function for getting anime name from input
@@ -129,6 +159,13 @@ errorCLoseBtn.addEventListener("click", () => {
 
 filterBtn.addEventListener("click", () => {
   selectContainer.classList.toggle("hidden");
+});
+
+selectContainer.addEventListener("click", (e) => {
+  if (e.target.classList.contains("option")) {
+    displayAnime(e.target.getAttribute("data-value"));
+    selectContainer.classList.toggle("hidden");
+  }
 });
 
 // Default
