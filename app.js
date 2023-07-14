@@ -82,7 +82,8 @@ function displayAnime(type) {
 }
 
 async function getAnimeData(name) {
-  //   let animes = [];
+  // Clear the old animes array before fetching data
+  animes = [];
   spinner.style.display = "block";
   const url = `https://api.jikan.moe/v4/anime?q=${name}&sfw`;
   try {
