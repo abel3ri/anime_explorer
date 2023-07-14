@@ -224,6 +224,9 @@ header {
 .footer a:is(:link, :visited) {
   color: #101920;
 }
+.footer a:is(:hover, :active) {
+  text-decoration: none;
+}
 
 @media (max-width: 645px) {
   header {

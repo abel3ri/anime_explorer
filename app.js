@@ -72,15 +72,17 @@ function sortAnime(animes, type = "default") {
       (a, b) => Date.parse(a.releaseDate) - Date.parse(b.releaseDate)
     );
   }
-  //   } else if(type == '')
 }
+// function clearAnimeContainer
 function displayAnime(type) {
+  clearAnimeContainer();
   sortAnime(animes, type).forEach((anime) => {
     anime.renderAnime();
   });
 }
 
 async function getAnimeData(name) {
+  //   let animes = [];
   spinner.style.display = "block";
   const url = `https://api.jikan.moe/v4/anime?q=${name}&sfw`;
   try {
@@ -103,6 +105,7 @@ async function getAnimeData(name) {
       animes.push(anime);
     });
     displayAnime("default");
+    // clearAnimeContainer();
 
     spinner.style.display = "none";
   } catch (err) {
@@ -110,11 +113,10 @@ async function getAnimeData(name) {
   }
 }
 //! Clear anime container before loading another anime
-const clearAnimeContainer = function () {
+function clearAnimeContainer() {
   animeContainer.innerHTML = "";
   // clear animes array
-  animes = [];
-};
+}
 
 //! Call back function for getting anime name from input
 
