@@ -49,6 +49,7 @@ class Anime {
       <div class="title-container"><p>Title</p><p>${this.title}</p></div>
       <div class="released-container"><p>Rleased</p><p>${this.formatDate()}</p></div>
       <div class="rating-container"><p>Rating</p><p>${this.rating}</p></div>
+      <a href="#" class="view-more-btn">View more &DownArrow;</a>
     </div>`;
 
     animeContainer.insertAdjacentHTML("beforeend", html);
