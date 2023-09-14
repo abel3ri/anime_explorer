@@ -1,20 +1,11 @@
 // Query Selectors
-
 const searchInput = document.querySelector(".search-input");
-const searchBtn = document.querySelector(".search-btn");
-const errorContainer = document.querySelector(".error");
-const errorCLoseBtn = document.querySelector(".close-btn");
-
-const filterBtn = document.querySelector(".filter-btn");
-const selectContainer = document.querySelector(".select-container");
+// import
 // *********************
 
-import {
-  displayError,
-  clearAnimeContainer,
-  displayAnime,
-  getAnimeData,
-} from "./utils/utils.js";
+import { displayError, clearAnimeContainer, getAnimeData } from "./utils/utils";
+
+import { toggleEventListeners } from "./utils/eventListeners";
 
 const getAnimeName = function () {
   if (searchInput.value == null || searchInput.value == "") {
@@ -25,7 +16,7 @@ const getAnimeName = function () {
   return searchInput.value;
 };
 
-function btnEventListener() {
+export function btnEventListener() {
   // Generic function that handle calling of anime Data for click event and keyboard event
   const animeName = getAnimeName();
   if (!animeName) {
@@ -36,30 +27,7 @@ function btnEventListener() {
 }
 
 // ! Event listeners
-searchBtn.addEventListener("click", () => {
-  btnEventListener();
-});
-
-window.addEventListener("keydown", (e) => {
-  if (e.key == "Enter") {
-    btnEventListener();
-  }
-});
-
-errorCLoseBtn.addEventListener("click", () => {
-  errorContainer.classList.remove("visible");
-});
-
-filterBtn.addEventListener("click", () => {
-  selectContainer.classList.toggle("hidden");
-});
-
-selectContainer.addEventListener("click", (e) => {
-  if (e.target.classList.contains("option")) {
-    displayAnime(e.target.getAttribute("data-value"));
-    selectContainer.classList.toggle("hidden");
-  }
-});
+toggleEventListeners();
 
 // Default
 

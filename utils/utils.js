@@ -52,9 +52,10 @@ async function getAnimeData(name) {
 
     const { data: animeData } = await res.json();
     searchInput.value = "";
-    //   console.log(animeData[0]);
+    // console.log(animeData[0]);
     animeData.forEach((a) => {
       const anime = new Anime(
+        a.mal_id,
         a.images.webp.image_url,
         a.title,
         a.aired.from,
