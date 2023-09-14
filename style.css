@@ -3,6 +3,7 @@
 :root {
   --primary-color: #fcf6f6;
   --secondary-color: #4932d5;
+  --tertiary-color: #32d5d2d6;
   --background-color: #101920;
   --background: #e9ecef;
   --accent-color: #87898c;
@@ -190,6 +191,42 @@ header {
   height: fit-content;
 
   box-shadow: 2px 2px 15px 10px rgba(0, 0, 0, 0.1);
+}
+
+.view-more-container {
+  position: absolute;
+  border-radius: 5px;
+  width: 94%;
+  height: 100%;
+  background-color: #4832d542;
+  z-index: 10;
+  backdrop-filter: blur(1px);
+
+  display: flex;
+  align-items: center;
+  justify-content: center !important;
+
+  transition: all 0.3s;
+}
+.view-more-container a {
+  font-size: 1.2rem;
+}
+.view-more-container a:is(:link, :visited) {
+  background-color: #4832d5ba;
+  color: var(--primary-color);
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px 10px rgba(0, 0, 0, 0.1);
+  text-decoration: none;
+  padding: 1rem 2rem;
+
+  transition: all 0.3s;
+}
+.view-more-container a:is(:hover, :active) {
+  background-color: #fcf6f6c6;
+  color: var(--secondary-color);
+}
+.view-more-container.hidden {
+  opacity: 0;
 }
 .anime div {
   display: flex;
