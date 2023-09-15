@@ -9,4 +9,12 @@ module.exports = {
     filename: "[name].bundle.js",
   },
   watch: true,
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: ["style-loader", "css-loader"],
+      },
+    ],
+  },
 };
