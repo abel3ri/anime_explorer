@@ -1,3 +1,6 @@
+import "./dist/styles/style.css";
+import "./dist/styles/footer.css";
+
 // Query Selectors
 const searchInput = document.querySelector(".search-input");
 // import
@@ -31,4 +34,4 @@ toggleEventListeners();
 
 // Default
 
-getAnimeData("Naruto");
+getAnimeData("Bleach");
