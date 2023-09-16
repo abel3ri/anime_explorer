@@ -14,7 +14,7 @@ This website is designed for people who wants to enlighten themselves with world
 
 ## Demo
 
-You can visit the live website at [https://abel3ri.github.io/anime_explorer](https://abel3ri.github.io/anime_explorer).
+You can visit the live website at [https://anime-explorer.netlify.app/](https://anime-explorer.netlify.app/).
 
 ## Technologies Used
 
@@ -23,6 +23,7 @@ The anime explorer website is built using the following technologies:
 - HTML
 - CSS
 - JavaScript
+- webpack
 
 ## Features
 
@@ -37,6 +38,7 @@ To set up the anime explorer locally, follow these steps:
 
 1. Clone this repository: `git clone git@github.com:abel3ri/anime_explorer.git`
 2. Navigate to the project directory: `cd anime_explorer`
+3. npm i
 
 ## Usage
 
