@@ -44,11 +44,18 @@ async function embedHtml() {
     // Chnage the page's title with the anime name
     document.title = animeData.title;
 
+    const animeTitle =
+      animeData.title.length > 42
+        ? animeData.title.split("").splice(0, 42).join("") + "..."
+        : animeData.title;
+
+    // console.log(animeTitle);
+
     // const animeStudio = animeData.studios
     const html = `<header class="header"></header>
     <main class="main-content">
       <div class="content">
-        <h1 class="anime-title">${animeData.title}</h1>
+        <h1 class="anime-title">${animeTitle}</h1>
         <div class="anime-details-container">
           <h3 class="anime-rating">${animeData.rating.split(" ")[0]}</h3>
           <h3 class="anime-type">${animeData.type}</h3>
@@ -77,9 +84,15 @@ async function embedHtml() {
           <p>${animeData.type}</p>
         </div>
         <hr />
-        <div>
+        <div class="genres-container">
           <p>Genres</p>
-          <p>${genres.join(", ")}</p>
+          <p class=${
+            genres.reduce((acc, cur) => {
+              return (acc += cur.length);
+            }, 0) >= 30
+              ? "genres"
+              : ""
+          }>${genres.join(", ")}</p>
         </div>
         <hr />
         <div>

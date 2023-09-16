@@ -210,10 +210,10 @@ header {
 
   transition: all 0.3s;
 }
-.view-more-container a {
+.view-more-btn {
   font-size: 1.2rem;
 }
-.view-more-container a:is(:link, :visited) {
+.view-more-btn:is(:link, :visited) {
   background-color: #4832d5ba;
   color: var(--primary-color);
   border-radius: 5px;
@@ -223,7 +223,7 @@ header {
 
   transition: all 0.3s;
 }
-.view-more-container a:is(:hover, :active) {
+.view-more-btn:is(:hover, :active) {
   background-color: #fcf6f6c6;
   color: var(--secondary-color);
 }

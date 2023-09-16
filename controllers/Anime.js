@@ -38,13 +38,14 @@ export class Anime {
     const html = `
       <div class="anime">
         <div class="view-more-container hidden">
-        <a href="/dist/pages/details.html?id=${this.id}">View More</a>
+        <a href="/dist/pages/details.html?id=${this.id}" class="view-more-btn">View More</a>
         </div>
         <img src="${this.imgSrc}" alt="Anime image" class="anime-img" />
         <div class="title-container"><p>Title</p><p>${this.title}</p></div>
         <div class="released-container"><p>Rleased</p><p>${this.formatDate()}</p></div>
         <div class="rating-container"><p>Rating</p><p>${this.rating}</p></div>
-      </div>`;
+      </div>
+      `;
 
     animeContainer.insertAdjacentHTML("beforeend", html);
   }

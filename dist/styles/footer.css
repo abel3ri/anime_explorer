@@ -1,9 +1,16 @@
 .footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   max-width: 60rem;
   margin: 4rem auto 2rem auto;
   font-size: 1.6rem;
 
   text-align: center;
+}
+.footer p {
+  display: inline-block;
 }
 .footer a:is(:link, :visited) {
   color: #101920;
@@ -12,6 +19,8 @@
   text-decoration: none;
 }
 .footer .hire-btn:is(:link, :active) {
+  display: block;
+  width: fit-content;
   text-decoration: none;
   padding: 0.2rem 0.5rem;
   background-color: var(--secondary-color);
