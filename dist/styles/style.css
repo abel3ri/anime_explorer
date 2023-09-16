@@ -20,7 +20,7 @@ html {
 
 body {
   background-color: var(--background);
-
+  position: relative;
   /* overflow-x: hidden; */
 }
 
@@ -254,6 +254,41 @@ header {
   height: 30rem;
 }
 
+.prompt-container {
+  position: absolute;
+  top: 20rem;
+  left: 50%;
+  transform: translateX(-50%);
+
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: max-content;
+  margin: 0 auto;
+
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  box-shadow: 2px 4px 10px 5px rgba(0, 0, 0, 0.1);
+  padding: 1rem 2rem;
+  border-radius: 5px;
+  user-select: none;
+}
+.prompt-container p {
+  font-size: 1.2rem;
+}
+
+.prompt-close-btn {
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  right: 1rem;
+  background-color: transparent;
+  border: none;
+  font-size: 3rem;
+  color: var(--primary-color);
+}
+
 @media (max-width: 645px) {
   header {
     max-width: 45rem;
@@ -261,5 +296,18 @@ header {
   .container {
     grid-template-columns: 1fr;
     max-width: 32rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .prompt-container {
+    width: 32em;
+    padding: 1rem;
+  }
+  .prompt-container p {
+    font-size: 1rem;
+  }
+  .prompt-close-btn {
+    font-size: 4rem;
   }
 }

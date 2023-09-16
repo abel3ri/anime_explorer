@@ -38,7 +38,7 @@ export class Anime {
     const html = `
       <div class="anime">
         <div class="view-more-container hidden">
-        <a href="/dist/pages/details.html?id=${this.id}" class="view-more-btn">View More</a>
+        <a href="./pages/details.html?id=${this.id}" class="view-more-btn">View More</a>
         </div>
         <img src="${this.imgSrc}" alt="Anime image" class="anime-img" />
         <div class="title-container"><p>Title</p><p>${this.title}</p></div>

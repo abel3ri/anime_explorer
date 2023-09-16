@@ -4,10 +4,22 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Anime Explorer</title>
-    <script defer src="./app.bundle.js"></script>
+    <link rel="stylesheet" href="../dist/styles/style.css" />
+    <script defer src="../dist/app.bundle.js"></script>
   </head>
+  <!-- Hide class is added to hide the whole content of the website before the style fully loads meanwhile the spinner will be set to "diplay: block" -->
   <body>
-    <header>
+    <div class="prompt-container">
+      <button class="prompt-close-btn">&times;</button>
+      <h1>What's new?</h1>
+      <ul>
+        <li><p>You can now hover over any anime to see the details.</p></li>
+        <li><p>Anime trailer included(Embeded + YT link).</p></li>
+      </ul>
+
+      <h3>Enjoy!</h3>
+    </div>
+    <header class="hide" style="visibility: hidden">
       <input type="text" placeholder="e.g. Bleach" class="search-input" />
       <button class="search-btn">Search</button>
       <button class="filter-btn">
@@ -27,21 +39,21 @@
         </svg>
       </button>
       <!-- Select options -->
-      <div class="select-container hidden">
+      <div class="select-container hidden hide" style="visibility: hidden">
         <div class="option" data-value="title">Sort by title</div>
         <div class="option" data-value="rating">Sort by rating</div>
         <div class="option" data-value="release">Sort by release date</div>
       </div>
     </header>
     <!-- Error container -->
-    <div class="error">
+    <div class="error hide" style="visibility: hidden">
       <p></p>
       <button class="close-btn">✖</button>
     </div>
     <!-- Spinner -->
     <div class="spinner"></div>
     <!-- Anime container -->
-    <main class="container">
+    <main class="container hide" style="visibility: hidden">
       <!-- <div class="anime">
           <img src="./imgs/placeholder.jpg" alt="Anime image" class="anime-img" />
           <div class="title-container"><p>Title</p></div>
@@ -49,7 +61,7 @@
           <div class="rating-container"><p>Rating</p></div>
         </div> -->
     </main>
-    <footer class="footer">
+    <footer class="footer hide" style="visibility: hidden">
       <div>
         <a href="https://abel3ri.github.io/" target="_blank"
           >abel3ri.github.io</a
