@@ -6,9 +6,28 @@ const animeId = parseInt(location.href.split("=")[1]);
 const animeDataUrl = `https://api.jikan.moe/v4/anime/${animeId}`;
 const animeImageUrl = `https://api.jikan.moe/v4/anime/${animeId}/pictures`;
 
+function spinSpinner() {
+  const homeBtn = document.querySelector(".home-btn");
+  const spinner = document.querySelector(".spinner");
+
+  spinner.style.display = "block";
+
+  window.addEventListener("load", () => {
+    setTimeout(() => {
+      homeBtn.style.display = "block";
+      spinner.style.display = "none";
+    }, 100);
+  });
+}
+
+spinSpinner();
+
 async function fetchAnimeData() {
   try {
+    // spinner.style.display = "block";
+
     const res = await axios.get(animeDataUrl);
+    // spinner.style.display = "none";
     return res.data.data;
   } catch (error) {
     console.log(error.message);
@@ -28,6 +47,7 @@ async function embedHtml() {
   try {
     const animeData = await fetchAnimeData();
     const animeImageUrl = await fetchAnimeImage();
+
     let genres = [];
     animeData.genres.forEach((genre) => {
       genres.push(genre.name);

@@ -1,14 +1,35 @@
-import "./dist/styles/style.css";
+// import "./dist/styles/style.css";
 import "./dist/styles/footer.css";
+
+import * as promptNewUser from "./utils/promptNewUser";
+
+import { displayError, clearAnimeContainer, getAnimeData } from "./utils/utils";
+
+import { toggleEventListeners } from "./utils/eventListeners";
+
+function spinSpinner() {
+  const spinner = document.querySelector(".spinner");
+  const hideClasses = document.querySelectorAll(".hide");
+
+  spinner.style.display = "block";
+
+  window.addEventListener("load", () => {
+    spinner.style.display = "block";
+    setTimeout(() => {
+      hideClasses.forEach((c) => {
+        c.style.visibility = "visible";
+      });
+      spinner.style.display = "none";
+    }, 200);
+  });
+}
+
+spinSpinner();
 
 // Query Selectors
 const searchInput = document.querySelector(".search-input");
 // import
 // *********************
-
-import { displayError, clearAnimeContainer, getAnimeData } from "./utils/utils";
-
-import { toggleEventListeners } from "./utils/eventListeners";
 
 const getAnimeName = function () {
   if (searchInput.value == null || searchInput.value == "") {
