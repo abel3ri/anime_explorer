@@ -4,12 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Anime Explorer</title>
-    <link rel="stylesheet" href="../dist/styles/style.css" />
     <script defer src="../dist/app.bundle.js"></script>
   </head>
   <!-- Hide class is added to hide the whole content of the website before the style fully loads meanwhile the spinner will be set to "diplay: block" -->
   <body>
-    <div class="prompt-container">
+    <div class="prompt-container hide" style="visibility: hidden">
       <button class="prompt-close-btn">&times;</button>
       <h1>What's new?</h1>
       <ul>
@@ -18,6 +17,7 @@
       </ul>
 
       <h3>Enjoy!</h3>
+      <!-- End of select container -->
     </div>
     <header class="hide" style="visibility: hidden">
       <input type="text" placeholder="e.g. Bleach" class="search-input" />
